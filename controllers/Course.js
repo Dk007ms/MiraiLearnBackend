@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Course = require("../models/Course");
-const Tag = require("../models/tags");
+const Tag = require("../models/Category");
 const User = require("../models/user");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
@@ -35,7 +35,6 @@ exports.createCourse = async (req, res) => {
     const userId = req.User.id;
     const instructorDetails = await User.findById(userId);
 
-    
     if (!instructorDetails) {
       return res.status(404).json({
         success: false,
